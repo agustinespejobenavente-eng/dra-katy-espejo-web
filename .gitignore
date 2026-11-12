@@ -1,0 +1,15 @@
+# Carpetas internas de herramientas (no son parte del sitio)
+.claude/
+.codex/
+.gemini/
+.impeccable/critique/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+
+# Notas internas del proyecto (datos por confirmar con la doctora): no publicar en un repositorio público
+PRODUCT.md
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

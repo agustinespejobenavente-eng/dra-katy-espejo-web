@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-12T22:05:50.771Z",
+        "reason": "Claude: falso positivo del análisis estático; secciones y pie tienen margen vía .container y padding-block, y las filas de tratamientos y preguntas usan padding-block de 1.1rem sobre su línea divisoria (verificado en el navegador)"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "privacidad.html"
+        ],
+        "createdAt": "2026-11-12T22:51:24.092Z",
+        "reason": "Claude: falso positivo; es la línea divisoria superior del pie (.footer-bottom), con padding-block de 1.25rem sobre el texto, verificado en el navegador"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "terminos.html"
+        ],
+        "createdAt": "2026-11-12T22:51:24.303Z",
+        "reason": "Claude: falso positivo; es la línea divisoria superior del pie (.footer-bottom), con padding-block de 1.25rem sobre el texto, verificado en el navegador"
+      }
+    ]
+  }
+}
