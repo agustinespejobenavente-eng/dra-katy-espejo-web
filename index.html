@@ -85,7 +85,7 @@
   <!-- Animación inicial: breve, sobria, una vez por sesión. Cuando llegue el logo manuscrito, reemplaza a .intro-name -->
   <div id="intro" class="intro" role="presentation">
     <div class="intro-inner">
-      <p class="intro-name">Dra. Katy Espejo</p>
+      <img class="intro-logo" src="img/logo-katy.png" alt="Dra. Katy" width="640" height="521">
       <span class="intro-rule" aria-hidden="true"></span>
       <p class="intro-role">Dentista en el sur de Chile</p>
     </div>
@@ -94,18 +94,17 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Espacio para el logo "Dra Katy": reemplazar el texto por <img src="img/logo-katy.svg" alt="Dra. Katy Espejo"> -->
       <a class="brand" href="#inicio" aria-label="Dra. Katy Espejo, ir al inicio">
-        <span class="brand-name">Dra. Katy Espejo</span>
-        <span class="brand-role"><span class="role-long">Cirujana Dentista · </span>Rehabilitación Oral</span>
+        <img class="brand-logo" src="img/logo-katy.png" alt="" width="640" height="521">
+        <span class="brand-role">Cirujana Dentista<br>Rehabilitación Oral</span>
       </a>
 
       <nav class="main-nav" aria-label="Principal">
         <ul>
           <li><a href="#inicio" data-nav="inicio">Inicio</a></li>
           <li><a href="#quien-soy" data-nav="quien-soy">Quién soy</a></li>
-          <li><a href="#servicios" data-nav="servicios">Servicios</a></li>
           <li><a href="#resultados" data-nav="resultados">Resultados</a></li>
+          <li><a href="#servicios" data-nav="servicios">Servicios</a></li>
           <li><a href="#contacto" data-nav="contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -127,8 +126,8 @@
       <ul class="container">
         <li><a href="#inicio" data-nav="inicio">Inicio</a></li>
         <li><a href="#quien-soy" data-nav="quien-soy">Quién soy</a></li>
-        <li><a href="#servicios" data-nav="servicios">Servicios</a></li>
         <li><a href="#resultados" data-nav="resultados">Resultados</a></li>
+        <li><a href="#servicios" data-nav="servicios">Servicios</a></li>
         <li><a href="#contacto" data-nav="contacto">Contacto</a></li>
       </ul>
     </div>
@@ -141,7 +140,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="hero-avatar" aria-hidden="true">
-            <span class="avatar-ph">Foto</span>
+            <img class="avatar" src="img/katy-retrato.jpg" alt="" width="56" height="56">
             <span><strong>Dra. Katy Espejo</strong><br>Puerto Montt</span>
           </div>
           <h1 id="hero-title">Te ayudo a recuperar la confianza al sonreír.</h1>
@@ -154,9 +153,7 @@
         </div>
 
         <figure class="hero-photo">
-          <div class="photo-ph photo-portrait" role="img" aria-label="Espacio para el retrato de la Dra. Katy">
-            <span>Retrato de la Dra. Katy<br><small>foto real, con delantal y luz natural</small></span>
-          </div>
+          <img class="photo photo-portrait" src="img/katy-retrato.jpg" alt="La Dra. Katy Espejo sonriendo en su box dental, con uniforme azul marino" width="768" height="1364" fetchpriority="high">
         </figure>
       </div>
     </section>
@@ -164,9 +161,7 @@
     <!-- ============ SOBRE MÍ ============ -->
     <section class="section about" id="quien-soy" aria-labelledby="about-title">
       <div class="container about-grid">
-        <div class="photo-ph photo-room" role="img" aria-label="Espacio para una foto de la Dra. Katy en el sur">
-          <span>Foto en el sur<br><small>Hornopirén, Carretera Austral o atendiendo</small></span>
-        </div>
+        <img class="photo photo-room" src="img/katy-atendiendo.jpg" alt="La Dra. Katy atendiendo a un paciente con lupas de magnificación" width="1000" height="1333" loading="lazy">
         <div class="about-copy">
           <h2 id="about-title">Quién soy</h2>
           <p>Empecé haciendo voluntariados y después viví y trabajé en el extremo sur, en Hornopirén. Ahí vi lo que de verdad necesitaban mis pacientes, y me propuse acercarles una odontología real, pensada para cada persona y no para la foto.</p>
@@ -185,8 +180,131 @@
       </div>
     </section>
 
+    <!-- ============ RESULTADOS ============ -->
+    <section class="section section-alt" id="resultados" aria-labelledby="resultados-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="resultados-title">Casos de pacientes</h2>
+          <p>Elige un tratamiento o deja que pasen solos. Cada caso se publica con autorización escrita del paciente.</p>
+        </div>
+
+        <!--
+          Carrusel de casos. Para agregar uno: copiar un <article class="case"> con su data-tipo
+          (blanqueamiento, carillas, diseno o rehabilitacion) y poner la foto en img/casos/.
+          Publicar solo con autorización escrita de cada paciente.
+        -->
+        <div class="carousel" id="cases" role="region" aria-roledescription="carrusel" aria-label="Casos de pacientes">
+          <div class="case-types" role="group" aria-label="Tipos de caso">
+            <button type="button" class="case-type" data-tipo="blanqueamiento" aria-current="true">Blanqueamiento</button>
+            <button type="button" class="case-type" data-tipo="carillas">Carillas</button>
+            <button type="button" class="case-type" data-tipo="diseno">Diseño de sonrisa</button>
+            <button type="button" class="case-type" data-tipo="rehabilitacion">Rehabilitación</button>
+            <button type="button" class="case-pause" id="case-play" aria-label="Pausar el carrusel" aria-pressed="false">
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
+            </button>
+          </div>
+
+          <div class="carousel-stage">
+          <button type="button" class="case-arrow case-arrow-prev" id="case-prev" aria-controls="case-track" aria-label="Caso anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="case-arrow case-arrow-next" id="case-next" aria-controls="case-track" aria-label="Caso siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="case-track" aria-live="off">
+
+              <article class="case" data-tipo="blanqueamiento" aria-roledescription="diapositiva" aria-label="Blanqueamiento: durante el tratamiento">
+                <figure class="case-media"><img src="img/casos/blanqueamiento-gel.jpg" alt="Blanqueamiento en clínica: gel blanqueador sobre los dientes y barrera protectora sobre las encías" width="1080" height="929" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Durante el tratamiento</p>
+                  <h3>Blanqueamiento en clínica</h3>
+                  <p>Antes de aplicar el gel, protejo las encías con una barrera. Así el tratamiento actúa solo sobre los dientes.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Blanqueamiento dental">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="blanqueamiento" aria-roledescription="diapositiva" aria-label="Blanqueamiento: detalle del proceso">
+                <figure class="case-media"><img src="img/casos/blanqueamiento-barrera.jpg" alt="Primer plano de un blanqueamiento: gel sobre los dientes y barrera azul en el borde de la encía" width="1080" height="921" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Durante el tratamiento</p>
+                  <h3>Cuidado en cada detalle</h3>
+                  <p>Cada sesión se controla de cerca para cuidar la sensibilidad y lograr un color parejo y natural.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Blanqueamiento dental">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="carillas" aria-roledescription="diapositiva" aria-label="Carillas: antes y después">
+                <figure class="case-media"><img src="img/casos/carillas-antes-despues.jpg" alt="Dientes frontales antes y después de carillas: arriba con desgaste y manchas, abajo con forma y color parejos" width="1080" height="1350" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Antes y después</p>
+                  <h3>Carillas</h3>
+                  <p>Dientes frontales con desgaste y manchas, corregidos en forma y color.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Carillas de resina">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="carillas" aria-roledescription="diapositiva" aria-label="Carillas: resultado">
+                <figure class="case-media"><img src="img/casos/carillas-resultado.jpg" alt="Perfil de una sonrisa con carillas terminadas, de brillo y forma natural" width="1080" height="968" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Resultado</p>
+                  <h3>Carillas con brillo natural</h3>
+                  <p>El objetivo es que se vean como dientes propios: con textura, brillo y forma que calcen con tu cara.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Carillas cerámicas">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="diseno" aria-roledescription="diapositiva" aria-label="Diseño de sonrisa: planificación">
+                <figure class="case-media"><img src="img/casos/diseno-modelo.jpg" alt="Modelo de la boca del paciente con los dientes nuevos planificados, sostenido en la mano" width="900" height="1600" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Planificación</p>
+                  <h3>Diseño de sonrisa</h3>
+                  <p>Antes de tocar un diente, planificamos la nueva sonrisa en un modelo de tu boca. Así puedes verla antes de decidir.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Diseño de sonrisa">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="diseno" aria-roledescription="diapositiva" aria-label="Diseño de sonrisa: resultado">
+                <figure class="case-media"><img src="img/casos/diseno-resultado.jpg" alt="Sonrisa amplia con dientes frontales de forma y color armónicos" width="1080" height="1029" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Resultado</p>
+                  <h3>Una sonrisa en armonía</h3>
+                  <p>Forma, tamaño y color pensados en conjunto, para que la sonrisa se vea natural al hablar y al reír.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Diseño de sonrisa">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="rehabilitacion" aria-roledescription="diapositiva" aria-label="Rehabilitación: antes y después">
+                <figure class="case-media"><img src="img/casos/rehabilitacion-antes-despues.jpg" alt="Rehabilitación oral antes y después: arriba dientes desgastados y en mala posición, abajo una dentadura completa y alineada" width="1080" height="1350" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Antes y después</p>
+                  <h3>Rehabilitación oral completa</h3>
+                  <p>Dientes desgastados, perdidos y en mala posición, rehabilitados para volver a masticar y sonreír con tranquilidad.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Rehabilitación compleja">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+              <article class="case" data-tipo="rehabilitacion" aria-roledescription="diapositiva" aria-label="Rehabilitación: resultado">
+                <figure class="case-media"><img src="img/casos/rehabilitacion-paciente.jpg" alt="Paciente sonriendo de frente y de perfil después de su tratamiento, con un primer plano de sus dientes" width="1080" height="1350" loading="lazy"></figure>
+                <div class="case-info">
+                  <p class="case-kind">Resultado</p>
+                  <h3>Volver a sonreír</h3>
+                  <p>El resultado se mide en la sonrisa de cada paciente: de frente, de perfil y en el día a día.</p>
+                  <a class="btn btn-secondary" href="#contacto" data-motivo="Rehabilitación compleja">Quiero este tratamiento</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SERVICIOS ============ -->
-    <section class="section section-alt" id="servicios" aria-labelledby="servicios-title">
+    <section class="section" id="servicios" aria-labelledby="servicios-title">
       <div class="container">
         <div class="section-head">
           <h2 id="servicios-title">Estética dental y rehabilitación en Puerto Montt</h2>
@@ -234,11 +352,29 @@
             </ul>
           </div>
         </div>
+
+        <div class="pay-block">
+          <h3 id="pagos-title">Formas de pago e Isapre</h3>
+          <div class="pay-grid">
+            <div>
+              <h4>Medios de pago</h4>
+              <p>Débito, crédito y transferencia.</p>
+            </div>
+            <div>
+              <h4>Isapre</h4>
+              <p>Te entrego la boleta y el detalle de prestaciones para que pidas tu reembolso.</p>
+            </div>
+            <div>
+              <h4>Atención particular</h4>
+              <p>No atiendo por Fonasa.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ PRIMERA VISITA ============ -->
-    <section class="section" aria-labelledby="visita-title">
+    <section class="section section-alt" aria-labelledby="visita-title">
       <div class="container visit">
         <h2 id="visita-title">Así es tu primera visita</h2>
         <ol class="steps">
@@ -262,116 +398,22 @@
       </div>
     </section>
 
-    <!-- ============ RESULTADOS ============ -->
-    <section class="section section-alt" id="resultados" aria-labelledby="resultados-title">
+    <!-- ============ REELS ============ -->
+    <section class="section reels" id="instagram" aria-labelledby="reels-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="resultados-title">Casos de pacientes</h2>
-          <p>Elige un tratamiento o deja que pasen solos. Desliza sobre la foto para comparar el antes y el después. Cada caso se publica con autorización escrita del paciente.</p>
+        <div class="section-head reels-head">
+          <h2 id="reels-title">Aprende conmigo en Instagram</h2>
+          <p>Explico tratamientos, resuelvo dudas y muestro cómo es un día como dentista en el sur. <a href="https://www.instagram.com/dentista.katy/reels/" target="_blank" rel="noopener">Ver todos los reels<span class="sr-only"> (se abre en otra pestaña)</span></a></p>
         </div>
-
-        <!--
-          Carrusel de casos. Para agregar un caso real:
-          1) copiar un <article class="case"> y un botón en .case-types con el mismo orden;
-          2) reemplazar .ph-antes / .ph-despues por <img src="..." alt="..." width="1200" height="750" loading="lazy">.
-          Publicar solo con autorización escrita de cada paciente.
-        -->
-        <div class="carousel" id="cases" role="region" aria-roledescription="carrusel" aria-label="Casos de pacientes">
-          <div class="case-types" role="group" aria-label="Tipos de caso">
-            <button type="button" class="case-type" data-go="0" aria-current="true">Blanqueamiento</button>
-            <button type="button" class="case-type" data-go="1">Carillas</button>
-            <button type="button" class="case-type" data-go="2">Diseño de sonrisa</button>
-            <button type="button" class="case-type" data-go="3">Rehabilitación</button>
-            <button type="button" class="case-pause" id="case-play" aria-label="Pausar el carrusel" aria-pressed="false">
-              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
-              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
-            </button>
-          </div>
-
-          <div class="carousel-viewport">
-            <div class="carousel-track" id="case-track" aria-live="off">
-
-              <article class="case" aria-roledescription="diapositiva" aria-label="Caso 1 de 4: Blanqueamiento dental">
-                <div class="ba" style="--pos:50%">
-                  <div class="ba-img ph-antes"><span class="ba-tag">Antes</span></div>
-                  <div class="ba-img ba-despues ph-despues"><span class="ba-tag">Después</span></div>
-                  <div class="ba-handle" aria-hidden="true"><span></span></div>
-                  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: blanqueamiento">
-                </div>
-                <div class="case-info">
-                  <h3>Blanqueamiento dental</h3>
-                  <p>Espacio para un caso real de blanqueamiento, con una breve descripción del tratamiento.</p>
-                  <a class="btn btn-secondary" href="#contacto" data-motivo="Blanqueamiento dental">Quiero este tratamiento</a>
-                </div>
-              </article>
-
-              <article class="case" aria-roledescription="diapositiva" aria-label="Caso 2 de 4: Carillas">
-                <div class="ba" style="--pos:50%">
-                  <div class="ba-img ph-antes"><span class="ba-tag">Antes</span></div>
-                  <div class="ba-img ba-despues ph-despues"><span class="ba-tag">Después</span></div>
-                  <div class="ba-handle" aria-hidden="true"><span></span></div>
-                  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: carillas">
-                </div>
-                <div class="case-info">
-                  <h3>Carillas</h3>
-                  <p>Espacio para un caso real de carillas de resina o cerámicas.</p>
-                  <a class="btn btn-secondary" href="#contacto" data-motivo="Carillas de resina">Quiero este tratamiento</a>
-                </div>
-              </article>
-
-              <article class="case" aria-roledescription="diapositiva" aria-label="Caso 3 de 4: Diseño de sonrisa">
-                <div class="ba" style="--pos:50%">
-                  <div class="ba-img ph-antes"><span class="ba-tag">Antes</span></div>
-                  <div class="ba-img ba-despues ph-despues"><span class="ba-tag">Después</span></div>
-                  <div class="ba-handle" aria-hidden="true"><span></span></div>
-                  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: diseño de sonrisa">
-                </div>
-                <div class="case-info">
-                  <h3>Diseño de sonrisa</h3>
-                  <p>Espacio para un caso real de diseño de sonrisa.</p>
-                  <a class="btn btn-secondary" href="#contacto" data-motivo="Diseño de sonrisa">Quiero este tratamiento</a>
-                </div>
-              </article>
-
-              <article class="case" aria-roledescription="diapositiva" aria-label="Caso 4 de 4: Rehabilitación oral">
-                <div class="ba" style="--pos:50%">
-                  <div class="ba-img ph-antes"><span class="ba-tag">Antes</span></div>
-                  <div class="ba-img ba-despues ph-despues"><span class="ba-tag">Después</span></div>
-                  <div class="ba-handle" aria-hidden="true"><span></span></div>
-                  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: rehabilitación">
-                </div>
-                <div class="case-info">
-                  <h3>Rehabilitación oral</h3>
-                  <p>Espacio para un caso real de rehabilitación o prótesis.</p>
-                  <a class="btn btn-secondary" href="#contacto" data-motivo="Rehabilitación compleja">Quiero este tratamiento</a>
-                </div>
-              </article>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PAGOS ============ -->
-    <section class="section" aria-labelledby="pagos-title">
-      <div class="container">
-        <h2 id="pagos-title" class="h2-left">Formas de pago e Isapre</h2>
-        <div class="pay-grid">
-          <div>
-            <h3>Medios de pago</h3>
-            <p>Débito, crédito y transferencia.</p>
-          </div>
-          <div>
-            <h3>Isapre</h3>
-            <p>Te entrego la boleta y el detalle de prestaciones para que pidas tu reembolso.</p>
-          </div>
-          <div>
-            <h3>Atención particular</h3>
-            <p>No atiendo por Fonasa.</p>
-          </div>
-        </div>
+        <!-- Portadas guardadas en img/reels/: el sitio no carga Instagram hasta que la persona toca un reel -->
+        <ul class="reels-strip">
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/DfqGK6Qx9mC/" target="_blank" rel="noopener"><img src="img/reels/DfqGK6Qx9mC.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">Un día conmigo como dentista en el sur<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/Db4LUw8RAOW/" target="_blank" rel="noopener"><img src="img/reels/Db4LUw8RAOW.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">El blanqueamiento casero, ¿es para mí?<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/DdC0AIIxa2G/" target="_blank" rel="noopener"><img src="img/reels/DdC0AIIxa2G.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">Cómo dejar de tener mal aliento<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/DcPaOQbxSv2/" target="_blank" rel="noopener"><img src="img/reels/DcPaOQbxSv2.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">POV: vas al dentista<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/Da1Ga6BRIRC/" target="_blank" rel="noopener"><img src="img/reels/Da1Ga6BRIRC.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">Un recordatorio que alguien tenía que decir<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+          <li><a class="reel" href="https://www.instagram.com/dentista.katy/reel/Der9Ob8xfN-/" target="_blank" rel="noopener"><img src="img/reels/Der9Ob8xfN-.jpg" alt="" width="400" height="711" loading="lazy"><span class="reel-title">Así somos los dentistas<span class="sr-only"> (reel en Instagram, se abre en otra pestaña)</span></span></a></li>
+        </ul>
       </div>
     </section>
 

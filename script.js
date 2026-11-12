@@ -26,6 +26,10 @@
       animacionScroll = t < 1 ? requestAnimationFrame(paso) : null;
     };
     animacionScroll = requestAnimationFrame(paso);
+    // Seguro: si el navegador no anima (pestaña en segundo plano, ahorro de energía), llega igual a la sección
+    setTimeout(function () {
+      if (animacionScroll && t0 === null) { cancelAnimationFrame(animacionScroll); animacionScroll = null; window.scrollTo(0, destino); }
+    }, 250);
   }
   // Si la persona usa la rueda o el dedo durante la animación, se le devuelve el control
   ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
@@ -120,12 +124,6 @@
       quick.classList.add('is-visible');
     }
 
-    /* ---------- Comparadores antes/después ---------- */
-    document.querySelectorAll('.ba').forEach(function (ba) {
-      var range = ba.querySelector('.ba-range');
-      range.addEventListener('input', function () { ba.style.setProperty('--pos', range.value + '%'); });
-    });
-
     /* ---------- Carrusel de casos: automático, con vecinos visibles y tipos arriba ---------- */
     var carousel = document.getElementById('cases');
     var viewport = carousel.querySelector('.carousel-viewport');
@@ -150,8 +148,10 @@
         s.classList.toggle('is-active', activo);
         s.inert = !activo; // solo el caso visible recibe foco y lector de pantalla
       });
-      chips.forEach(function (c, j) {
-        if (j === actual) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
+      // El tipo de arriba se marca según la categoría del caso visible (hay varios casos por tipo)
+      var tipo = slides[actual].dataset.tipo;
+      chips.forEach(function (c) {
+        if (c.dataset.tipo === tipo) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
       });
       centrar();
     };
@@ -190,7 +190,19 @@
       clearTimeout(manualTimer);
       manualTimer = setTimeout(function () { setPausa('manual', false); }, 12000);
     };
-    chips.forEach(function (c, j) { c.addEventListener('click', function () { elegir(j); }); });
+    // Cada tipo lleva al primer caso de esa categoría; si ya se está viendo ese tipo, pasa al siguiente caso del mismo tipo
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        var delTipo = [];
+        slides.forEach(function (s, j) { if (s.dataset.tipo === c.dataset.tipo) delTipo.push(j); });
+        if (!delTipo.length) return;
+        var pos = delTipo.indexOf(actual);
+        elegir(pos === -1 ? delTipo[0] : delTipo[(pos + 1) % delTipo.length]);
+      });
+    });
+    // Flechas a los lados
+    document.getElementById('case-prev').addEventListener('click', function () { elegir(actual - 1); });
+    document.getElementById('case-next').addEventListener('click', function () { elegir(actual + 1); });
     slides.forEach(function (s, j) { s.addEventListener('click', function () { if (j !== actual) elegir(j); }); });
 
     carousel.addEventListener('mouseenter', function () { setPausa('hover', true); });
@@ -203,10 +215,10 @@
       setPausa('fuera', false);
     }
 
-    // Deslizar con el dedo sobre la tarjeta (sobre la foto, el dedo mueve el comparador)
+    // Deslizar con el dedo sobre la tarjeta
     var inicioX = null, inicioY = null, dx = 0;
     track.addEventListener('pointerdown', function (e) {
-      if (e.target.closest('.ba-range') || e.pointerType === 'mouse') { if (e.target.closest('.ba-range')) setPausa('arrastre', true); return; }
+      if (e.pointerType === 'mouse') return;
       inicioX = e.clientX; inicioY = e.clientY; dx = 0;
       setPausa('arrastre', true);
     });
@@ -226,7 +238,6 @@
     document.addEventListener('pointerup', function () { if (pausasTemporales.arrastre && inicioX === null) setPausa('arrastre', false); });
 
     carousel.addEventListener('keydown', function (e) {
-      if (e.target.closest('.ba-range')) return; // las flechas en el comparador mueven el comparador
       if (e.key === 'ArrowRight') { e.preventDefault(); elegir(actual + 1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); elegir(actual - 1); }
     });

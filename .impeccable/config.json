@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-11-12T22:51:24.303Z",
         "reason": "Claude: falso positivo; es la línea divisoria superior del pie (.footer-bottom), con padding-block de 1.25rem sobre el texto, verificado en el navegador"
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-12T23:09:27.714Z",
+        "reason": "Claude: falso positivo; el logo de la intro (.intro-logo) parte en opacity 0 y una animación lo lleva a 1 en ~1 s, verificado en el navegador (carga 640px y se ve)"
       }
     ]
   }
