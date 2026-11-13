@@ -175,7 +175,7 @@ h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); }
 .hero-avatar { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.25rem; font-size: .9375rem; color: var(--text-2); line-height: 1.35; }
 .hero-avatar strong { color: var(--ink); font-weight: 600; }
 .avatar {
-  flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 30%;
+  flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover;  /* katy-avatar.jpg ya viene recortada en la cara */
   border: 3px solid var(--bg); outline: 2px solid var(--rose-soft); outline-offset: 0;
 }
 @media (min-width: 940px) { .hero-avatar { display: none; } }
@@ -290,9 +290,10 @@ h1 { font-size: clamp(2.6rem, 6.2vw, 4.4rem); max-width: 17ch; }
 .case-kind { font-size: .875rem; font-weight: 600; color: var(--rose-hover); margin-bottom: .35rem; }
 
 /* Foto del caso: marco oscuro clínico, la imagen se ve completa (no se recorta el antes/después) */
-.case-media { margin: 0; aspect-ratio: 4 / 5; max-height: 560px; border-radius: var(--radius); overflow: hidden; background: #15171D; display: grid; place-items: center; }
-.case-media img { width: 100%; height: 100%; object-fit: contain; }
-@media (max-width: 899px) { .case-media { aspect-ratio: 1 / 1; } }
+/* La foto se ve completa en su proporción original (sin recortes); si es muy alta, se limita y se encaja */
+.case-media { margin: 0; border-radius: var(--radius); overflow: hidden; background: #15171D; display: flex; align-items: center; justify-content: center; }
+.case-media img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; }
+@media (max-width: 899px) { .case-media img { max-height: 64vh; } }
 
 /* ---------- Reels de Instagram ---------- */
 .reels-head p a { font-weight: 600; white-space: nowrap; }
