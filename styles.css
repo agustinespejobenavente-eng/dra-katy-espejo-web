@@ -175,10 +175,11 @@ h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); }
 .hero-avatar { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.25rem; font-size: .9375rem; color: var(--text-2); line-height: 1.35; }
 .hero-avatar strong { color: var(--ink); font-weight: 600; }
 .avatar {
-  flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover;  /* katy-avatar.jpg ya viene recortada en la cara */
+  flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 30%;
   border: 3px solid var(--bg); outline: 2px solid var(--rose-soft); outline-offset: 0;
 }
 @media (min-width: 940px) { .hero-avatar { display: none; } }
+@media (max-width: 939px) { .hero { padding-top: 1rem; } }   /* en el celular el círculo con su foto queda más arriba, cerca del logo */
 h1 { font-size: clamp(2.6rem, 6.2vw, 4.4rem); max-width: 17ch; }
 .lead { margin-top: 1.5rem; font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--text-2); max-width: 36em; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
