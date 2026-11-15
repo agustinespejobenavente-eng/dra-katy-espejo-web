@@ -4,10 +4,12 @@ Prototipo del sitio de presentación de la Dra. Katherine Espejo B., cirujana de
 
 Es un sitio estático (HTML, CSS y JavaScript, sin framework):
 
-- `index.html`: página principal.
-- `privacidad.html` y `terminos.html`: borradores legales para revisar.
-- `styles.css` y `script.js`: diseño e interacciones.
-- `fonts/`: tipografías alojadas en el propio sitio.
+- `nuevo/`: el sitio vigente (`index.html`, `styles.css`, `script.js`).
+- `index.html` (raíz): solo redirige a `nuevo/`.
+- `privacidad.html`, `terminos.html` y `styles.css` (raíz): borradores legales con su estilo, pendientes de pasar al diseño nuevo.
+- `img/` y `fonts/`: fotos, logo y tipografías alojadas en el propio sitio.
+
+La primera versión del sitio quedó guardada en la etiqueta de git `sitio-primera-version`.
 
 ## Estado
 
