@@ -80,6 +80,20 @@
     });
   }
 
+  // +900 se desliza al hacer scroll
+  const big = document.querySelector('.bignum__n');
+  if (big && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+    const move = () => {
+      const r = big.parentElement.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, 1 - r.top / window.innerHeight));
+      big.style.transform = `translateX(${Math.max(0, (0.6 - p) / 0.6) * 10}vw)`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
+  }
+
   // Formulario: arma el mensaje y abre WhatsApp
   const form = document.querySelector('[data-form]');
   const err = form.querySelector('[data-err]');
