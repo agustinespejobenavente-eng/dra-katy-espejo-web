@@ -255,7 +255,7 @@ em { font-style: italic; }
 
 /* Foto a todo el ancho */
 .band { position: relative; min-height: min(86vh, 820px); display: grid; align-items: end; overflow: hidden; margin-bottom: clamp(48px, 6vw, 80px); }
-.band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; filter: saturate(1.05) contrast(1.04) sepia(.07); }
+.band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 21%; filter: saturate(1.05) contrast(1.04) sepia(.07); }
 .band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 26, 44, .88) 0, rgba(20, 26, 44, .45) 45%, rgba(20, 26, 44, .05) 100%); }
 .band__txt { position: relative; z-index: 1; max-width: var(--wrap); width: 100%; margin: 0 auto; padding: 0 var(--gut) clamp(48px, 7vw, 96px); }
 .band__txt p { max-width: 17em; color: #fff; font: 500 clamp(34px, 4.6vw, 68px)/1.08 var(--serif); letter-spacing: -.025em; }
