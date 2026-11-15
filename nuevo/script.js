@@ -1,4 +1,36 @@
 (() => {
+  // Titular de la portada: cada palabra entra por separado
+  const title = document.querySelector('.hero__title');
+  if (title) {
+    let i = 0;
+    const wrap = (node) => {
+      [...node.childNodes].forEach((child) => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const inner = document.createElement('span'); inner.textContent = part; inner.style.setProperty('--i', i++);
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1) { wrap(child); }
+      });
+    };
+    title.setAttribute('aria-label', title.textContent.replace(/\s+/g, ' ').trim());
+    wrap(title);
+    [...title.children].forEach((c) => c.setAttribute('aria-hidden', 'true'));
+    title.classList.add('is-split');
+  }
+
+  // Telón de entrada: se quita del DOM al terminar; un clic lo salta
+  const intro = document.querySelector('[data-intro]');
+  if (intro && document.documentElement.classList.contains('intro-on')) {
+    intro.addEventListener('animationend', (e) => { if (e.animationName === 'curtain') intro.remove(); });
+    intro.addEventListener('click', () => intro.remove());
+  } else if (intro) { intro.remove(); }
+
   const top = document.querySelector('[data-top]');
   const onScroll = () => top.classList.toggle('is-scrolled', window.scrollY > 8);
   onScroll();

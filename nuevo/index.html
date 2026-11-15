@@ -14,6 +14,14 @@
 <link rel="preload" href="../fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script>
+  (function (d) {
+    d.classList.add('js');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try { if (sessionStorage.getItem('katy-intro')) return; sessionStorage.setItem('katy-intro', '1'); } catch (e) {}
+    d.classList.add('intro-on');
+  })(document.documentElement);
+</script>
 </head>
 <body>
 
@@ -27,6 +35,13 @@
 </svg>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="intro" aria-hidden="true" data-intro>
+  <div class="intro__mark">
+    <img src="../img/logo-katy.png" alt="" width="640" height="521">
+    <span class="intro__line"></span>
+  </div>
+</div>
 
 <header class="top" data-top>
   <div class="top__inner">
@@ -119,7 +134,7 @@
     </div>
 
     <div class="treat__grid">
-      <div class="treat__group reveal">
+      <div class="treat__group treat__group--light reveal">
         <h3>Estética dental y facial</h3>
         <ul class="tlist">
           <li><div><h4>Blanqueamiento dental</h4><p>En la consulta o en tu casa, con cubetas hechas a tu medida.</p></div><span class="price"><small>desde</small> $100.000</span></li>
@@ -128,6 +143,11 @@
           <li><div><h4>Diseño de sonrisa</h4><p>Planificamos tu sonrisa completa antes de tocar un solo diente.</p></div><span class="price"><small>desde</small> $80.000</span></li>
           <li><div><h4>Botox</h4><p>En la zona de la boca y la cara, siempre después de evaluarte.</p></div><span class="price"><small>desde</small> $180.000</span></li>
         </ul>
+        <ul class="payinfo">
+      <li><strong>Formas de pago</strong> Débito, crédito y transferencia.</li>
+      <li><strong>Isapre</strong> Te entrego la boleta y el detalle de prestaciones para que pidas el reembolso.</li>
+      <li><strong>Fonasa</strong> No atiendo por Fonasa. La atención es particular.</li>
+    </ul>
       </div>
       <div class="treat__group treat__group--dark reveal">
         <h3>Rehabilitación oral</h3>
@@ -143,12 +163,6 @@
         </div>
       </div>
     </div>
-
-    <ul class="payinfo reveal">
-      <li><strong>Formas de pago</strong> Débito, crédito y transferencia.</li>
-      <li><strong>Isapre</strong> Te entrego la boleta y el detalle de prestaciones para que pidas el reembolso.</li>
-      <li><strong>Fonasa</strong> No atiendo por Fonasa. La atención es particular.</li>
-    </ul>
   </section>
 
   <!-- Casos -->
