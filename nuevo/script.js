@@ -97,12 +97,14 @@
   // Formulario: arma el mensaje y abre WhatsApp
   const form = document.querySelector('[data-form]');
   const err = form.querySelector('[data-err]');
+  const ok = form.querySelector('[data-ok]');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const nombre = String(data.get('nombre') || '').trim();
-    if (!nombre) { err.hidden = false; form.nombre.focus(); return; }
+    if (!nombre) { ok.hidden = true; err.hidden = false; form.nombre.focus(); return; }
     err.hidden = true;
+    ok.hidden = false;
     const msg = `Hola Dra. Katy, soy ${nombre}. Me interesa: ${data.get('tratamiento')}.` +
       (String(data.get('mensaje') || '').trim() ? ` ${String(data.get('mensaje')).trim()}` : '');
     window.open(`https://wa.me/56953253615?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
